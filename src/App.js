@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Header from './components/Header';
 
-function App() {
+const App = () => {
+  const [rojo, setrojo] = useState("Off");
+  const [amarillo, setamarillo] = useState("Off");
+  const [verde, setverde] = useState("Off");
+
+  const rojoOn = () => {
+    setrojo("OnRed");
+    setamarillo("Off");
+    setverde("Off");
+  }
+  const amarilloOn = () => {
+    setamarillo("OnYellow");
+    setrojo("Off");
+    setverde("Off");
+  }
+  const verdeOn = () => {
+  setverde("OnGreen");
+  setamarillo("Off");
+  setrojo("Off");
+  }  
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div>
+      <Header/>
+      <div className="semaforo">
+        <div className={rojo + " rojo"} onClick={rojoOn}></div>
+        <div className={amarillo + " amarillo"} onClick={amarilloOn}></div>
+        <div className={verde + " verde"} onClick={verdeOn}></div>
+      </div>
     </div>
   );
-}
 
+
+}
 export default App;
